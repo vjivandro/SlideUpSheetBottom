@@ -19,7 +19,7 @@ Add dependency
 
 ```bash
 dependencies {
-	        implementation 'com.github.vjivandro:SlideUpSheetBottom:Tag'
+	        implementation 'com.github.vjivandro:SlideUpSheetBottom:1.0.0'
 	}
 ```
 
