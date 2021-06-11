@@ -25,7 +25,7 @@ class SlideUpBottomsheet(private val context: Context, private val viewGroup: Vi
     private var floatingMenuView: View? = null
     private var panelView: View? = null
     private var menuRadius = 0f
-    private var menuBackgroundColor = R.color.white
+    private var menuBackgroundColor = Color.parseColor("#FFFFFF")
 
     private val rootView: ViewGroup by lazy {
         ViewGroup.inflate(context, R.layout.slider_up_bottom_sheet, null) as CoordinatorLayout
@@ -37,7 +37,7 @@ class SlideUpBottomsheet(private val context: Context, private val viewGroup: Vi
 
     private val nestedContent by lazy {
         rootView.findViewById<FrameLayout>(R.id.slide_layout_expand)
-            .findViewById<NestedScrollView>(R.id.slide_nested_content)
+                .findViewById<NestedScrollView>(R.id.slide_nested_content)
     }
 
     private val backgroundRoundedDrawable by lazy {
@@ -62,7 +62,7 @@ class SlideUpBottomsheet(private val context: Context, private val viewGroup: Vi
 
     private val framePanel by lazy {
         (rootView.findViewById<FrameLayout>(R.id.slide_layout_expand)
-            .getChildAt(0) as NestedScrollView).findViewById<FrameLayout>(R.id.slide_frame_panel)
+                .getChildAt(0) as NestedScrollView).findViewById<FrameLayout>(R.id.slide_frame_panel)
     }
 
 
@@ -104,7 +104,7 @@ class SlideUpBottomsheet(private val context: Context, private val viewGroup: Vi
         return this
     }
 
-    fun setFloatingMenuColor(@ColorInt color: Int): SlideUpBottomsheet {
+    fun setFloatingMenuColor(color: Int): SlideUpBottomsheet {
         menuBackgroundColor = color
         return this
     }
@@ -136,7 +136,7 @@ class SlideUpBottomsheet(private val context: Context, private val viewGroup: Vi
         viewGroup.removeView(panelView)
 
         val frameFloatingMenu =
-            panelExpandable.findViewById<FrameLayout>(R.id.slide_frame_floating_menu)
+                panelExpandable.findViewById<FrameLayout>(R.id.slide_frame_floating_menu)
 
         frameFloatingMenu.addView(floatingMenuView)
         framePanel.addView(panelView)
@@ -148,17 +148,17 @@ class SlideUpBottomsheet(private val context: Context, private val viewGroup: Vi
         floatingMenuView?.layoutParams = floatingMenuLayoutParams
 
         panelExpandable.setPadding(
-            viewGroup.paddingLeft,
-            panelExpandable.paddingTop,
-            viewGroup.paddingRight,
-            panelExpandable.paddingBottom
+                viewGroup.paddingLeft,
+                panelExpandable.paddingTop,
+                viewGroup.paddingRight,
+                panelExpandable.paddingBottom
         )
 
         viewGroup.setPadding(
-            0,
-            viewGroup.paddingTop,
-            0,
-            viewGroup.paddingBottom
+                0,
+                viewGroup.paddingTop,
+                0,
+                viewGroup.paddingBottom
         )
 
         rootView.layoutParams = rootView.layoutParams.apply {
@@ -192,22 +192,22 @@ class SlideUpBottomsheet(private val context: Context, private val viewGroup: Vi
              * 0 Hide - 100 Expanded*/
 
             val dynamicLeftPadding =
-                defaultPaddingLeft.minus(((defaultPaddingLeft.toFloat().div(100)).times(point)))
-                    .toInt()
+                    defaultPaddingLeft.minus(((defaultPaddingLeft.toFloat().div(100)).times(point)))
+                            .toInt()
             val dynamicRightPadding =
-                defaultPaddingRight.minus(((defaultPaddingRight.toFloat().div(100)).times(point)))
-                    .toInt()
+                    defaultPaddingRight.minus(((defaultPaddingRight.toFloat().div(100)).times(point)))
+                            .toInt()
             val dynamicBottomPadding =
-                defaultPaddingBottom.minus(((defaultPaddingBottom.toFloat().div(100)).times(point)))
-                    .toInt()
+                    defaultPaddingBottom.minus(((defaultPaddingBottom.toFloat().div(100)).times(point)))
+                            .toInt()
 
 
             panelExpandable.setPadding(dynamicLeftPadding, 0, dynamicRightPadding, 0)
             parentLayout.setPadding(
-                parentLayout.paddingLeft,
-                parentLayout.paddingTop,
-                parentLayout.paddingRight,
-                dynamicBottomPadding
+                    parentLayout.paddingLeft,
+                    parentLayout.paddingTop,
+                    parentLayout.paddingRight,
+                    dynamicBottomPadding
             )
         }
     }
@@ -223,7 +223,7 @@ class SlideUpBottomsheet(private val context: Context, private val viewGroup: Vi
 
 
         backgroundRoundedDrawable.cornerRadius =
-            menuRadius.minus((menuRadius.div(5).times(point)))
+                menuRadius.minus((menuRadius.div(5).times(point)))
         if (point > 4) {
             nestedContent.visibility = View.VISIBLE
             floatingMenuView?.visibility = View.INVISIBLE
